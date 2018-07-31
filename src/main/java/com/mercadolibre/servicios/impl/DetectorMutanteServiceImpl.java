@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import com.mercadolibre.entidades.BusquedaDiagonalAsc;
 import com.mercadolibre.entidades.BusquedaDiagonalDesc;
@@ -14,14 +15,16 @@ import com.mercadolibre.enums.BaseNitrogenadaEnum;
 import com.mercadolibre.exepciones.BaseNitrogenadaException;
 import com.mercadolibre.exepciones.ElementoBaseNitrogenadaException;
 import com.mercadolibre.interfaces.IBusquedaMutante;
-import com.mercadolibre.servicios.IDetectorMutanteService;
+import com.mercadolibre.servicios.DetectorMutanteService;
 
-public class DetectorMutanteServiceImpl implements IDetectorMutanteService {
+
+@Service("detectorMutanteService")
+public class DetectorMutanteServiceImpl implements DetectorMutanteService {
 	
 	private static final Logger LOGGER = LogManager.getLogger(DetectorMutanteServiceImpl.class);
 	
 	public boolean isMutant(String[] dna) throws ElementoBaseNitrogenadaException, BaseNitrogenadaException {
-		
+	
 		boolean blnResult = false;
 		
 		/**valido elementos de las bases nitrogenadas*/
@@ -35,6 +38,8 @@ public class DetectorMutanteServiceImpl implements IDetectorMutanteService {
 		/** Busqueda de mutantes por diferentes estrategias */
 		for (IBusquedaMutante busquedaStrategy : estrategias) {
 			if(busquedaStrategy.buscarMutante(matriz)) {
+				LOGGER.debug("Mutante encontrado");
+				System.out.println("Mutante encontrado");
 				return true;
 			}
 		}

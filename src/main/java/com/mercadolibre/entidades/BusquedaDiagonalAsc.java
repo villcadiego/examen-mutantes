@@ -27,7 +27,6 @@ public class BusquedaDiagonalAsc implements IBusquedaMutante {
 		    for (int j = 0; j <= i; j ++) {
 		    	base_nitrogenada += matriz[i-j][j];
 		    }
-		    System.out.println(base_nitrogenada);
 		    cantidad_patrones += BusquedaUtils.getCantidadPatronesRepetidos(base_nitrogenada);
 			if(cantidad_patrones >= ConstantsMutant.CANTIDAD_SECUENCIAS_MINIMA)
 				return true;		
@@ -39,7 +38,6 @@ public class BusquedaDiagonalAsc implements IBusquedaMutante {
 		    for (int j=0 ; j<matriz.length-i-1; j++) { 
 		    	base_nitrogenada +=matriz[matriz.length-j-1][j+i+1];
 		    }
-		    System.out.println(base_nitrogenada);
 		    cantidad_patrones += BusquedaUtils.getCantidadPatronesRepetidos(base_nitrogenada);
 			if(cantidad_patrones >= ConstantsMutant.CANTIDAD_SECUENCIAS_MINIMA)
 				return true;		

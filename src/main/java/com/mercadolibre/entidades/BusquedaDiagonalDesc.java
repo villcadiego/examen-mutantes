@@ -12,7 +12,7 @@ public class BusquedaDiagonalDesc implements IBusquedaMutante {
 
 	public BusquedaDiagonalDesc() {
 	}
-	
+
 	/**
 	 * Implementacion de buscar mutantes por el metodo diagonal descendente
 	 */
@@ -26,7 +26,6 @@ public class BusquedaDiagonalDesc implements IBusquedaMutante {
 		    	base_nitrogenada += matriz[i + j][j];
 		    	LOGGER.debug("Evaluando: ["+(i+j) +"],["+j+"]");
 		    }
-		    System.out.println(base_nitrogenada);
 		    cantidad_patrones += BusquedaUtils.getCantidadPatronesRepetidos(base_nitrogenada);
 			if(cantidad_patrones >= ConstantsMutant.CANTIDAD_SECUENCIAS_MINIMA)
 				return true;		
@@ -38,7 +37,6 @@ public class BusquedaDiagonalDesc implements IBusquedaMutante {
 		    	LOGGER.debug("Evaluando: [\"+(j) +\"],[\"+(j+i+1)+\"]");
 		    	base_nitrogenada +=matriz[j][j+i+1];
 		    }
-		    System.out.println(base_nitrogenada);
 		    cantidad_patrones += BusquedaUtils.getCantidadPatronesRepetidos(base_nitrogenada);
 			if(cantidad_patrones >= ConstantsMutant.CANTIDAD_SECUENCIAS_MINIMA)
 				return true;		

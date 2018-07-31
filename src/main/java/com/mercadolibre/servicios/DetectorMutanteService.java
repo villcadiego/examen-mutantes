@@ -8,6 +8,7 @@ import com.mercadolibre.exepciones.ElementoBaseNitrogenadaException;
  * @author dvillca
  *
  */
-public interface IDetectorMutanteService {
+
+public interface DetectorMutanteService {
 	public boolean isMutant(String[] dna) throws BaseNitrogenadaException, ElementoBaseNitrogenadaException;
 }
