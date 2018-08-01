@@ -34,6 +34,8 @@
 	      <version>1.9.64</version>
 	    </dependency>
    		 <!-- [END api-dependencies] -->
+   		 
+   		 <!-- https://mvnrepository.com/artifact/org.apache.maven/maven-plugin-api -->
 	    
 	    <!-- [START_EXCLUDE silent] -->
 	    <!-- Test Dependencies -->
@@ -159,7 +161,7 @@
 
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.4.1</version>
+        <version>3.0.0-M2</version>
         <executions>
           <execution>
             <id>enforce-maven</id>
@@ -169,7 +171,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.5</version>
+                  <version>3.3.9</version>
                 </requireMavenVersion>
                 <requirePluginVersions>
                    <message>Best Practice is to always define plugin versions!</message>
