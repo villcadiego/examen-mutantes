@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mercadolibre.dao.DataBaseDAO;
 import com.mercadolibre.entities.SearchDiagonalAsc;
 import com.mercadolibre.entities.SearchDiagonalDesc;
 import com.mercadolibre.entities.SearchHorizontal;
@@ -14,6 +16,7 @@ import com.mercadolibre.entities.SearchVertical;
 import com.mercadolibre.enums.DNAElementEnum;
 import com.mercadolibre.exceptions.DNAElementException;
 import com.mercadolibre.exceptions.DNAException;
+import com.mercadolibre.exceptions.MutantDBException;
 import com.mercadolibre.interfaces.SearchMutant;
 import com.mercadolibre.services.MutantDetectorService;
 
@@ -21,9 +24,12 @@ import com.mercadolibre.services.MutantDetectorService;
 @Service("mutantDetectorService")
 public class MutantDetectorServiceImpl implements MutantDetectorService {
 	
+	@Autowired
+	private DataBaseDAO dataBaseDAO;
+	
 	private static final Logger LOGGER = LogManager.getLogger(MutantDetectorServiceImpl.class);
 	
-	public boolean isMutant(String[] dna) throws DNAElementException, DNAException {
+	public boolean isMutant(String[] dna) throws DNAElementException, DNAException, MutantDBException {
 	
 		boolean isMutant = false;
 		
@@ -32,10 +38,14 @@ public class MutantDetectorServiceImpl implements MutantDetectorService {
 		List<SearchMutant> estrategias = getSearchStrategies(); //search strategies
 		
 		for (SearchMutant busquedaStrategy : estrategias) {
-			if(busquedaStrategy.searchMutants(matrix)) {
-				return true;
-			}
+				if(busquedaStrategy.searchMutants(matrix)) {
+					isMutant = true;
+					break;
+				}
 		}
+		
+		dataBaseDAO.insertDNA(dna, isMutant);
+		
 		return isMutant;
 	}
 	

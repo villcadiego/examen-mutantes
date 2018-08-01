@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mercadolibre.entities.DNARequest;
-import com.mercadolibre.exceptions.DNAException;
 import com.mercadolibre.exceptions.DNAElementException;
+import com.mercadolibre.exceptions.DNAException;
+import com.mercadolibre.exceptions.MutantDBException;
 import com.mercadolibre.services.MutantDetectorService;
 
 /**
@@ -50,8 +51,11 @@ public class MutantDetectorController {
 			else
 				responseEntity = new ResponseEntity<String>(HttpStatus.FORBIDDEN);
 			
-		} catch (DNAException | DNAElementException e) {
+		} catch (DNAException | DNAElementException  e) {
 			responseEntity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			logger.error(e.getMessage(), e);
+		}catch (MutantDBException e) {
+			responseEntity = new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
 			logger.error(e.getMessage(), e);
 		}
 		return responseEntity;
