@@ -161,7 +161,7 @@
 
       <plugin>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>1.4.1</version>
+        <version>3.0.0-M2</version>
         <executions>
           <execution>
             <id>enforce-maven</id>
@@ -171,7 +171,7 @@
             <configuration>
               <rules>
                 <requireMavenVersion>
-                  <version>3.5</version>
+                  <version>3.3.9</version>
                 </requireMavenVersion>
                 <requirePluginVersions>
                    <message>Best Practice is to always define plugin versions!</message>
