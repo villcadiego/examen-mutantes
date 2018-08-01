@@ -2,11 +2,9 @@ package com.mercadolibre.enums;
 
 /**
  * @author dvillca
- * 
- * Se especifica que los caracteres de la BN solo pueden ser (A,T,C,G).
- *
+ * the DNA characters can only be of the ATCG type
  */
-public enum BaseNitrogenadaEnum {
+public enum DNAElementEnum {
 	
 	A("A"),
 	T("T"),
@@ -15,7 +13,7 @@ public enum BaseNitrogenadaEnum {
 	
 	private String caracter;
 
-	BaseNitrogenadaEnum(String caracter) {
+	DNAElementEnum(String caracter) {
 		this.caracter = caracter;
 	}
 

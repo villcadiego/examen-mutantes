@@ -1,4 +1,4 @@
-package com.mercadolibre.entidades;
+package com.mercadolibre.entities;
 
 /**
  * @author dvillca
