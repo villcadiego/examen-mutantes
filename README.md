@@ -13,7 +13,7 @@ La especificacion se encuentra anexada en la carpeta docs del aplicativo.
 * AWS
 
 ### Funcionalidades
-####Detector Mutantes: 
+#### Detector Mutantes: 
 
 endpoint http://mutantes.us-east-2.elasticbeanstalk.com/mutant
 
@@ -55,16 +55,16 @@ Ejemplo documento:
     "mutant": false
 }
 
-####Estadisticas:
+#### Estadisticas:
  endpoint http://mutantes.us-east-2.elasticbeanstalk.com/stats
  
 Se expone un servicio extra /stats que devuelva un Json con las estadísticas de las
 verificaciones de ADN: {“count_mutant_dna”:40, “count_human_dna”:100: “ratio”:0.4}
 
-##Deploy
+### Deploy
 mvn spring-boot:run
 
-##Observaciones
+### Observaciones
 Se generaron features en git por cada nivel especificado, una vez concretado el objetivo se realizó el merge correspondiente.
 proximamente voy a estar cerrando subir el mismo proyecto utilizando Google SDK.
 
