@@ -51,8 +51,7 @@ Ejemplo documento:
         "AGAAGG",
         "CCCCTA",
         "TCACTG"
-    ],
-    "mutant": false
+    ]
 }
 
 #### Estadisticas:
